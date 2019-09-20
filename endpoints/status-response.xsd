@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    elementFormDefault="qualified"
+
+    targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-mt-mobilities/blob/stable-v1/endpoints/status-response.xsd"
+    xmlns="https://github.com/erasmus-without-paper/ewp-specs-api-mt-mobilities/blob/stable-v1/endpoints/status-response.xsd">
+
+    <xs:annotation>
+        <xs:documentation>
+            This schema is a part of the Erasmus Without Paper project. Before you start using it, make
+            sure you have read the general rules described here:
+
+            http://developers.erasmuswithoutpaper.eu/
+        </xs:documentation>
+    </xs:annotation>
+
+    <xs:element name="mt-mobilities-status-response">
+        <xs:annotation>
+            <xs:documentation>
+                This describes the format of the response returned by the `status` endpoint of EWP
+                Mobility Tool+ Mobilities API.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="group-status" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Status of the whole report.
+                        </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="PENDING">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Report is still being processed. Caller should repeat status
+                                        request after some time.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                            <xs:enumeration value="ACCEPTED">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The whole report has been accepted.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                            <xs:enumeration value="REJECTED">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The whole report has been rejected due to some global error or
+                                        errors in every mobility.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                            <xs:enumeration value="PARTIAL">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Some of the mobilities present in the report has been accepted and
+                                        some of them has been rejected.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:enumeration>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
