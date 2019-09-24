@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace"
     xmlns:ewp="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd"
+    xmlns:p="https://github.com/erasmus-without-paper/ewp-specs-types-phonenumber/tree/stable-v1"
     elementFormDefault="qualified"
 
     targetNamespace="https://github.com/erasmus-without-paper/ewp-specs-api-mt-mobilities/blob/stable-v1/endpoints/report-request.xsd"
@@ -9,6 +10,10 @@
     <xs:import
         schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-architecture/stable-v1/common-types.xsd"
         namespace="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd" />
+
+    <xs:import
+        schemaLocation="https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-types-phonenumber/stable-v1/schema.xsd"
+        namespace="https://github.com/erasmus-without-paper/ewp-specs-types-phonenumber/tree/stable-v1" />
 
     <xs:annotation>
         <xs:documentation>
@@ -52,7 +57,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="mobility-id" type="ewp:AsciiPrintableIdentifier" minOccurs="1"
+                            <xs:element name="id" type="ewp:AsciiPrintableIdentifier" minOccurs="1"
                                 maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
@@ -69,10 +74,449 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
+                            <xs:element name="participant" type="MobilityParticipant" minOccurs="1"
+                                maxOccurs="1" />
+                            <xs:element name="force-majeure" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        If present, indicates that the mobility is classified as force
+                                        majeure.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:attribute name="explanation" type="xs:string" use="required" />
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="majeure-explanations" type="xs:string" minOccurs="0"
+                                maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Force Majeure Explanations. Mandatory if `force-majeure` is set to
+                                        true.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="studies-combined" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        A flag indicating that the mobility is combined with a traineeship
+                                        abroad as an overall mobility for the same participant.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="longterm" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Indicates if the activity is a long-term one following what is
+                                        defined in the programme tree.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="digital-skills" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Indicates if the student did a traineeship or studies combined
+                                        with a traineeship in digital skills.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="education-field" type="xs:string" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The field of education of the mobility. The value of education
+                                        field code from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries
+                                        API.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="study-level" type="xs:string" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The level of study/teaching for the mobility. The value of
+                                        education level code from CCM2. Values can be retrieved using Mobility Tool+
+                                        Dictionaries API.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="previous-participation" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The accumulated duration in months of all previous LLP/Erasmus,
+                                        Erasmus Mundus or Erasmus+ mobilities of the same student at the same study
+                                        level/cycle.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:decimal">
+                                        <xs:minInclusive value="0" />
+                                        <xs:fractionDigits value="2" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="main-language" type="xs:string" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The main language that the individual participant uses during the
+                                        mobility activity. The value of language code from CCM2. Values can be retrieved
+                                        using Mobility Tool+ Dictionaries API.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="native-speaker" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        A flag indicating that the participant is a native speaker of the
+                                        language indicated in the field `main-language`, in which case an OLS linguistic
+                                        assessment in this language is not required or that the participant has been
+                                        exempted from the linguistic assessment for other, duly justified reasons.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="other-language" type="xs:string" minOccurs="0" maxOccurs="3">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Other used languages in day-to-day situations that are not
+                                        necessarily linked to the mobility activity itself. The value of language code
+                                        from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries API.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="sending-organization" type="Organization" minOccurs="1"
+                                maxOccurs="1" />
+                            <xs:element name="sending-org-department" type="xs:string" minOccurs="0"
+                                maxOccurs="1" />
+                            <xs:element name="receiving-organization" type="Organization" minOccurs="1"
+                                maxOccurs="1" />
+                            <xs:element name="receiving-org-department" type="xs:string" minOccurs="0"
+                                maxOccurs="1" />
+                            <!-- TODO sending-country, sending-city, receiving-country, receiving-city? -->
+                            <xs:element name="outer" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        A flag indicating that the mobility participant is coming from an
+                                        outer-most Programme Country or region or OCT (Overseas Countries and
+                                        Territories).
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="distance-band" type="xs:string" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The distance band applicable to the countries and cities entered.
+                                        The value of distance band code from CCM2. Values can be retrieved using
+                                        Mobility Tool+ Dictionaries API.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="location-comments" type="xs:string" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Optional field to explain why a location/city different from the
+                                        one of the sending / receiving organisation is used to determine the distance
+                                        band.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="start-date" type="xs:date" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The date on which the mobility activity started. Before the
+                                        mobility, the data to be entered is the planned value. After the mobility, based
+                                        on supporting documents and in line with the participant's grant agreement, the
+                                        data to be entered is the actual/final value and will overwrite the initial
+                                        value.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="end-date" type="xs:date" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The date on which the mobility activity ended. The request for the
+                                        final participant report will be sent out after this end date. Before the
+                                        mobility, the data to be entered is the planned value. After the mobility, based
+                                        on supporting documents and in line with the participant's grant agreement, the
+                                        data to be entered is the actual/final value and will overwrite the initial
+                                        value. In case of a prolongation of the mobility , the new end date has to be
+                                        entered before the end of the mobility. Otherwise the request for the final
+                                        participant report will be sent out prematurely.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="interruption-duration" type="xs:integer" minOccurs="0"
+                                maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The total duration in days of all interruptions that occurred
+                                        during the mobility activity period.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="travel-days" type="xs:integer" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The number of days used for travel if necessary, for which
+                                        individual support is paid.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <!-- <xs:simpleType> -->
+                                <!-- <xs:restriction base="xs:integer"> -->
+                                <!-- <xs:minInclusive value="0" /> -->
+                                <!-- <xs:maxInclusive value="2" /> -->
+                                <!-- </xs:restriction> -->
+                                <!-- </xs:simpleType> -->
+                            </xs:element>
+                            <xs:element name="nonfunded-duration" type="xs:integer" minOccurs="0"
+                                maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The total duration in days of the mobility activity that is not
+                                        funded.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="zero-grant" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        A flag indicating that the mobility grant is not funded by EU
+                                        Erasmus+ funds.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <!-- <xs:element name="request-except-costs" type="xs:boolean" minOccurs="0" -->
+                            <!-- maxOccurs="1"> -->
+                            <!-- <xs:annotation> -->
+                            <!-- <xs:documentation> -->
+                            <!-- Indicates if an exceptional cost for travel expensive travel is -->
+                            <!-- necessary. -->
+                            <!-- </xs:documentation> -->
+                            <!-- </xs:annotation> -->
+                            <!-- </xs:element> -->
+                            <!-- <xs:element name="real-travel-costs"></xs:element> -->
+                            <!-- except-travelcosts -->
+                            <!-- exceptcosts-justification -->
+                            <xs:element name="special-needs-support" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        EU Special Needs Support. The additional real costs for the
+                                        participation of the participant with special needs in the mobility activity.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:decimal">
+                                        <xs:minInclusive value="0" />
+                                        <xs:fractionDigits value="2" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="additional-grant" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The additional total non-EU grant used in the mobility activity.
+                                    </xs:documentation>
+                                </xs:annotation>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:decimal">
+                                        <xs:minInclusive value="0" />
+                                        <xs:fractionDigits value="2" />
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="credits-number" type="xs:decimal" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The number of ECTS credits (or any other comparable system)
+                                        awarded by the sending higher education institution (HEI) to the student.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="overall-comments" type="xs:string" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Any piece of information that is considered important to explain
+                                        any relevant aspect related to the mobility activity such as the source of
+                                        non-EU funding (national, regional, local), etc.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <!-- draft-mobility? -->
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <xs:complexType name="MobilityParticipant">
+        <xs:sequence>
+            <xs:element name="given-names" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="family-name" type="xs:string" minOccurs="1" maxOccurs="1" />
+            <xs:element name="email" type="ewp:Email" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        The participant's email address. It should be an email address regularly used by
+                        the participant. This email address will be used to send the participant notifications such as
+                        the request for filling in the participant report, etc.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="gender" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Participant’s gender. The value of gender code from CCM2. Values can be retrieved
+                        using Mobility Tool+ Dictionaries API.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="participant-id" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Unique identification of a participant (it remains the same even if the
+                        participant undertakes more than one mobility activity). The beneficiary can choose the
+                        participant's identity card number, the passport number, the student card number, etc.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="birth-date" type="xs:date" minOccurs="1" maxOccurs="1" />
+            <xs:element name="citizenship" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        The citizenship of the participant. The value of country code from CCM2. Values
+                        can be retrieved using Mobility Tool+ Dictionaries API.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="special-needs" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        A flag indicating if the participant has special needs.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="disadvantaged" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        A flag indicating if the participant comes from a disadvantaged background.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="recent-graduate" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        Indicates if a HE Student is doing a traineeship abroad is a recent graduate.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Organization">
+        <!-- TODO documentation - xs:choice explanation -->
+        <xs:choice minOccurs="1" maxOccurs="1">
+            <xs:element name="pic" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>
+                        Participant Identification Code of the organization. If known, SHOULD be given
+                        instead of individual organization data.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:sequence>
+                <xs:element name="id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
+                    <!-- TODO czy wymagane? (pytanie do MT+) -->
+                    <xs:annotation>
+                        <xs:documentation>The unique identifier of the organization.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="erasmus" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Erasmus code of the organization.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <!-- <xs:element name="legal-name" type="xs:string" minOccurs="1" maxOccurs="1"> -->
+                <!-- <xs:annotation> -->
+                <!-- <xs:documentation> -->
+                <!-- The legal name of the receiving organization using only Latin characters. -->
+                <!-- </xs:documentation> -->
+                <!-- </xs:annotation> -->
+                <!-- </xs:element> -->
+                <!-- TODO business name, full legal name -->
+                <xs:element name="acronym" type="xs:string" minOccurs="0" maxOccurs="1" />
+                <xs:element name="national-id" type="xs:string" minOccurs="0" maxOccurs="1" />
+                <!-- TODO type, public-body, non-profit są niewymagane w docu, wymagane przy braku PIC w xls -->
+                <xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Type of the organization. List of possible values can be retrieved using
+                            Mobility Tool+ Dictionaries API.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="public-body" type="xs:boolean" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            A flag indicating whether the organization is a public body.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="non-profit" type="xs:boolean" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            A flag indicating whether the organization is a non-profit organization.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="below250" type="xs:boolean" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            A flag indicating whether the number of employees of the organization is below
+                            250.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="legal-address" type="xs:string" minOccurs="1" maxOccurs="1" />
+                <xs:element name="vat-number" type="xs:string" minOccurs="0" maxOccurs="1" />
+                <xs:element name="country" type="xs:string" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Organization country. The value of country code from CCM2. Values can be
+                            retrieved using Mobility Tool+ Dictionaries API.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="region" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            Organization region. The value of country region code from CCM2. Values can be
+                            retrieved using Mobility Tool+ Dictionaries API.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="po-box" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The P.O. Box of the organization.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="postal-code" type="xs:string" minOccurs="0" maxOccurs="1" />
+                <xs:element name="cedex" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The CEDEX code number of the organization.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="city" type="xs:string" minOccurs="1" maxOccurs="1" />
+                <xs:element name="email" type="ewp:Email" minOccurs="1" maxOccurs="1" />
+                <xs:element name="website-url" type="ewp:HTTPWithOptionalLang" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="p:phone-number" minOccurs="1" maxOccurs="2" />
+                <xs:element ref="p:fax-number" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- TODO zmiany uwzględniające odpowiedzi MK -->
+
 </xs:schema>
