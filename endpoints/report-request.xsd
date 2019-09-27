@@ -266,12 +266,6 @@
                                         individual support is paid.
                                     </xs:documentation>
                                 </xs:annotation>
-                                <!-- <xs:simpleType> -->
-                                <!-- <xs:restriction base="xs:integer"> -->
-                                <!-- <xs:minInclusive value="0" /> -->
-                                <!-- <xs:maxInclusive value="2" /> -->
-                                <!-- </xs:restriction> -->
-                                <!-- </xs:simpleType> -->
                             </xs:element>
                             <xs:element name="nonfunded-duration" type="xs:integer" minOccurs="0"
                                 maxOccurs="1">
@@ -375,7 +369,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="participant-id" type="xs:string" minOccurs="0" maxOccurs="1">
+            <xs:element name="participant-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>
                         Unique identification of a participant (it remains the same even if the
