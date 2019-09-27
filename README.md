@@ -29,6 +29,21 @@ implementers to decide which methods are "secure enough". These recommendations
 MAY change in the future.
 
 
+Endpoints to be implemented
+---------------------------
+
+Server implementers MUST:
+
+ * Implement the [`report` endpoint](endpoints/report.md).
+ * Implement the [`status` endpoint](endpoints/status.md).
+ * Put the URLs of these endpoints in their [manifest file][discovery-api], as
+   described in [manifest-entry.xsd](manifest-entry.xsd).
+
+The details on each of these endpoints are described on separate pages of this
+API specification (use the links above).
+
+
 [develhub]: http://developers.erasmuswithoutpaper.eu/
+[discovery-api]: https://github.com/erasmus-without-paper/ewp-specs-api-discovery
 [sec-v2]: https://github.com/erasmus-without-paper/ewp-specs-sec-intro/tree/stable-v2
 [statuses]: https://github.com/erasmus-without-paper/ewp-specs-management#statuses

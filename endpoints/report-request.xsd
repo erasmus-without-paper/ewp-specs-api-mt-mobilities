@@ -153,7 +153,7 @@
                                     </xs:restriction>
                                 </xs:simpleType>
                             </xs:element>
-                            <xs:element name="main-language" type="xs:string" minOccurs="1" maxOccurs="1">
+                            <xs:element name="main-language" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The main language that the individual participant uses during the
@@ -161,16 +161,24 @@
                                         using Mobility Tool+ Dictionaries API.
                                     </xs:documentation>
                                 </xs:annotation>
-                            </xs:element>
-                            <xs:element name="native-speaker" type="xs:boolean" minOccurs="0" maxOccurs="1">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        A flag indicating that the participant is a native speaker of the
-                                        language indicated in the field `main-language`, in which case an OLS linguistic
-                                        assessment in this language is not required or that the participant has been
-                                        exempted from the linguistic assessment for other, duly justified reasons.
-                                    </xs:documentation>
-                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute name="native-speaker" use="optional"
+                                                type="xs:boolean">
+                                                <xs:annotation>
+                                                    <xs:documentation>
+                                                        A flag indicating that the participant is a native
+                                                        speaker of the main language, in which case an OLS linguistic
+                                                        assessment in this language is not required or that the
+                                                        participant has been exempted from the linguistic assessment for
+                                                        other, duly justified reasons.
+                                                    </xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
                             </xs:element>
                             <xs:element name="other-language" type="xs:string" minOccurs="0" maxOccurs="3">
                                 <xs:annotation>
