@@ -39,7 +39,7 @@ Handling of invalid parameters
    processing the request.
 
  * If the requester does not cover the sending HEI of the mobility, then server
-   MUST respond with HTTP 4xx error response, HTTP 401 preffered.
+   MUST respond with HTTP 4xx error response, HTTP 401 preferred.
 
  * More requirements are described in the [report-request.xsd](report-request.xsd) file.
 

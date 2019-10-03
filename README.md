@@ -12,7 +12,7 @@ It is assumed that this API is implemented by only one host managed by
 the Directoriate-General Education and Culture Unit (DG EAC) of the European Commission.
 However, the specification itself does not limit the number of hosts.
 
-It allows external clients to report list of their mobilities to Mobility Tool+.
+It allows external clients to report their mobilities to Mobility Tool+.
 
 
 Security
@@ -39,7 +39,7 @@ Server implementers MUST:
  * Put the URLs of these endpoints in their [manifest file][discovery-api], as
    described in [manifest-entry.xsd](manifest-entry.xsd).
 
-The details on each of these endpoints are described on separate pages of this
+The details of each of these endpoints are described on separate pages of this
 API specification (use the links above).
 
 
