@@ -284,7 +284,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <!-- <xs:element name="request-except-costs" type="xs:boolean" minOccurs="0" -->
+                            <!-- TODO <xs:element name="request-except-costs" type="xs:boolean" minOccurs="0" -->
                             <!-- maxOccurs="1"> -->
                             <!-- <xs:annotation> -->
                             <!-- <xs:documentation> -->
@@ -340,7 +340,7 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <!-- draft-mobility? -->
+                            <!-- TODO draft-mobility? -->
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -424,7 +424,7 @@
             </xs:element>
             <xs:sequence>
                 <xs:element name="id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
-                    <!-- TODO czy wymagane? (pytanie do MT+) -->
+                    <!-- TODO should be required? -->
                     <xs:annotation>
                         <xs:documentation>The unique identifier of the organization.</xs:documentation>
                     </xs:annotation>
@@ -446,7 +446,8 @@
                 <!-- TODO business name, full legal name -->
                 <xs:element name="acronym" type="xs:string" minOccurs="0" maxOccurs="1" />
                 <xs:element name="national-id" type="xs:string" minOccurs="0" maxOccurs="1" />
-                <!-- TODO type, public-body, non-profit są niewymagane w docu, wymagane przy braku PIC w xls -->
+                <!-- TODO type, public-body, non-profit - should be required? Are not required in doc, required if no PIC 
+                    in xls. -->
                 <xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
@@ -518,7 +519,5 @@
             </xs:sequence>
         </xs:choice>
     </xs:complexType>
-
-    <!-- TODO zmiany uwzględniające odpowiedzi MK -->
 
 </xs:schema>
