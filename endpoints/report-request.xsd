@@ -87,15 +87,6 @@
                                     <xs:attribute name="explanation" type="xs:string" use="required" />
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="majeure-explanations" type="xs:string" minOccurs="0"
-                                maxOccurs="1">
-                                <xs:annotation>
-                                    <xs:documentation>
-                                        Force Majeure Explanations. Mandatory if `force-majeure` is set to
-                                        true.
-                                    </xs:documentation>
-                                </xs:annotation>
-                            </xs:element>
                             <xs:element name="studies-combined" type="xs:boolean" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
@@ -123,6 +114,8 @@
                             <xs:element name="education-field" type="xs:string" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
+                                        <!-- TODO add dictionary name in all fields which can be retrieved using Dictionaries 
+                                            API -->
                                         The field of education of the mobility. The value of education
                                         field code from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries
                                         API.
@@ -189,8 +182,9 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="sending-organization" type="Organization" minOccurs="1"
-                                maxOccurs="1" />
+                            <!-- TODO do we need sending organization in context of mobility? -->
+                            <!-- <xs:element name="sending-organization" type="Organization" minOccurs="1" -->
+                            <!-- maxOccurs="1" /> -->
                             <xs:element name="sending-org-department" type="xs:string" minOccurs="0"
                                 maxOccurs="1" />
                             <xs:element name="receiving-organization" type="Organization" minOccurs="1"
@@ -361,14 +355,7 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="gender" type="xs:string" minOccurs="1" maxOccurs="1">
-                <xs:annotation>
-                    <xs:documentation>
-                        Participant’s gender. The value of gender code from CCM2. Values can be retrieved
-                        using Mobility Tool+ Dictionaries API.
-                    </xs:documentation>
-                </xs:annotation>
-            </xs:element>
+            <xs:element name="gender" type="ewp:Gender" minOccurs="1" maxOccurs="1" />
             <xs:element name="participant-id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>
@@ -404,7 +391,7 @@
             <xs:element name="recent-graduate" type="xs:boolean" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>
-                        Indicates if a HE Student is doing a traineeship abroad is a recent graduate.
+                        Indicates whether the student doing traineeship is a recent graduate.
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
