@@ -70,7 +70,8 @@
                                 <xs:annotation>
                                     <xs:documentation>
                                         Type of activity for this mobility. The value of activity code
-                                        from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries API.
+                                        from CCM2. Values
+                                        can be retrieved using Mobility Tool+ Dictionaries API.
                                         <!-- TODO we do not have such dictionary -->
                                     </xs:documentation>
                                 </xs:annotation>
@@ -177,20 +178,52 @@
                                     <xs:documentation>
                                         Other used languages in day-to-day situations that are not
                                         necessarily linked to the mobility activity itself. The value of language code
-                                        from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries API (languages).
+                                        from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries API
+                                        (languages).
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <!-- TODO do we need sending organization in context of mobility? -->
-                            <!-- <xs:element name="sending-organization" type="Organization" minOccurs="1" -->
-                            <!-- maxOccurs="1" /> -->
+                            <xs:element name="sending-organization" type="Organization" minOccurs="1"
+                                maxOccurs="1" />
                             <xs:element name="sending-org-department" type="xs:string" minOccurs="0"
                                 maxOccurs="1" />
                             <xs:element name="receiving-organization" type="Organization" minOccurs="1"
                                 maxOccurs="1" />
                             <xs:element name="receiving-org-department" type="xs:string" minOccurs="0"
                                 maxOccurs="1" />
-                            <!-- TODO sending-country, sending-city, receiving-country, receiving-city? -->
+                            <xs:element name="sending-country" type="xs:string" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The country which the participant in the mobility activity leaves
+                                        from. The value of country code from CCM2. Values can be retrieved using
+                                        Mobility Tool+ Dictionaries API (countries).
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="sending-city" type="xs:string" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The city which the participant in the mobility activity leaves
+                                        from.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="receiving-country" type="xs:string" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The country where the mobility takes place. The value of country
+                                        code from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries API
+                                        (countries).
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="receiving-city" type="xs:string" minOccurs="1" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The city where the mobility takes place.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
                             <xs:element name="outer" type="xs:boolean" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
@@ -277,44 +310,56 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <!-- TODO <xs:element name="request-except-costs" type="xs:boolean" minOccurs="0" -->
-                            <!-- maxOccurs="1"> -->
-                            <!-- <xs:annotation> -->
-                            <!-- <xs:documentation> -->
-                            <!-- Indicates if an exceptional cost for travel expensive travel is -->
-                            <!-- necessary. -->
-                            <!-- </xs:documentation> -->
-                            <!-- </xs:annotation> -->
-                            <!-- </xs:element> -->
-                            <!-- <xs:element name="real-travel-costs"></xs:element> -->
-                            <!-- except-travelcosts -->
-                            <!-- exceptcosts-justification -->
-                            <xs:element name="special-needs-support" minOccurs="0" maxOccurs="1">
+                            <!-- TODO The following four fields could possibly be better modelled, but we have to better 
+                                understand their meaning first. -->
+                            <xs:element name="request-except-costs" type="xs:boolean" minOccurs="0"
+                                maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        Indicates if an exceptional cost for travel expensive travel is
+                                        necessary.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="real-travel-costs" type="amount" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The exceptional cost for expensive travel.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="except-travelcosts" type="amount" minOccurs="0" maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The exceptional cost for expensive travel (up to 80% of the
+                                        eligible travel cost - field real-travel-cost).
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="exceptcosts-justification" type="xs:string" minOccurs="0"
+                                maxOccurs="1">
+                                <xs:annotation>
+                                    <xs:documentation>
+                                        The description and justification of the exceptional cost for
+                                        expensive travel. Mandatory if the except-travelcosts is greater than 0.
+                                    </xs:documentation>
+                                </xs:annotation>
+                            </xs:element>
+                            <xs:element name="special-needs-support" type="amount" minOccurs="0"
+                                maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         EU Special Needs Support. The additional real costs for the
                                         participation of the participant with special needs in the mobility activity.
                                     </xs:documentation>
                                 </xs:annotation>
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:decimal">
-                                        <xs:minInclusive value="0" />
-                                        <xs:fractionDigits value="2" />
-                                    </xs:restriction>
-                                </xs:simpleType>
                             </xs:element>
-                            <xs:element name="additional-grant" minOccurs="0" maxOccurs="1">
+                            <xs:element name="additional-grant" type="amount" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The additional total non-EU grant used in the mobility activity.
                                     </xs:documentation>
                                 </xs:annotation>
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:decimal">
-                                        <xs:minInclusive value="0" />
-                                        <xs:fractionDigits value="2" />
-                                    </xs:restriction>
-                                </xs:simpleType>
                             </xs:element>
                             <xs:element name="credits-number" type="xs:decimal" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
@@ -333,7 +378,6 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <!-- TODO draft-mobility? -->
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -405,7 +449,6 @@
     </xs:complexType>
 
     <xs:complexType name="Organization">
-        <!-- TODO documentation - xs:choice explanation -->
         <xs:choice minOccurs="1" maxOccurs="1">
             <xs:element name="pic" type="xs:string">
                 <xs:annotation>
@@ -417,7 +460,6 @@
             </xs:element>
             <xs:sequence>
                 <xs:element name="id" type="ewp:AsciiPrintableIdentifier" minOccurs="0" maxOccurs="1">
-                    <!-- TODO should be required? -->
                     <xs:annotation>
                         <xs:documentation>The unique identifier of the organization.</xs:documentation>
                     </xs:annotation>
@@ -429,19 +471,32 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <!-- <xs:element name="legal-name" type="xs:string" minOccurs="1" maxOccurs="1"> -->
-                <!-- <xs:annotation> -->
-                <!-- <xs:documentation> -->
-                <!-- The legal name of the receiving organization using only Latin characters. -->
-                <!-- </xs:documentation> -->
-                <!-- </xs:annotation> -->
-                <!-- </xs:element> -->
-                <!-- TODO business name, full legal name -->
+                <xs:element name="legal-name" type="xs:string" minOccurs="1" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The legal name of the organization using only Latin characters.
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="business-name" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The legal name of the organization using any characters (including national
+                            language characters).
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="full-legal-name" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation>
+                            The legal name of the organization entered by the national agency in E+Link
+                            and using any characters (including national language characters).
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:element>
                 <xs:element name="acronym" type="xs:string" minOccurs="0" maxOccurs="1" />
                 <xs:element name="national-id" type="xs:string" minOccurs="0" maxOccurs="1" />
-                <!-- TODO type, public-body, non-profit - should be required? Are not required in doc, required if no PIC 
-                    in xls. -->
-                <xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             Type of the organization. List of possible values can be retrieved using
@@ -449,14 +504,14 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="public-body" type="xs:boolean" minOccurs="1" maxOccurs="1">
+                <xs:element name="public-body" type="xs:boolean" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             A flag indicating whether the organization is a public body.
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="non-profit" type="xs:boolean" minOccurs="1" maxOccurs="1">
+                <xs:element name="non-profit" type="xs:boolean" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             A flag indicating whether the organization is a non-profit organization.
@@ -471,9 +526,9 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="legal-address" type="xs:string" minOccurs="1" maxOccurs="1" />
+                <xs:element name="legal-address" type="xs:string" minOccurs="0" maxOccurs="1" />
                 <xs:element name="vat-number" type="xs:string" minOccurs="0" maxOccurs="1" />
-                <xs:element name="country" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:element name="country" type="xs:string" minOccurs="0" maxOccurs="1">
                     <xs:annotation>
                         <xs:documentation>
                             Organization country. The value of country code from CCM2. Values can be
@@ -504,13 +559,20 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
-                <xs:element name="city" type="xs:string" minOccurs="1" maxOccurs="1" />
-                <xs:element name="email" type="ewp:Email" minOccurs="1" maxOccurs="1" />
+                <xs:element name="city" type="xs:string" minOccurs="0" maxOccurs="1" />
+                <xs:element name="email" type="ewp:Email" minOccurs="0" maxOccurs="1" />
                 <xs:element name="website-url" type="ewp:HTTPWithOptionalLang" minOccurs="0" maxOccurs="1" />
-                <xs:element ref="p:phone-number" minOccurs="1" maxOccurs="2" />
+                <xs:element ref="p:phone-number" minOccurs="0" maxOccurs="2" />
                 <xs:element ref="p:fax-number" minOccurs="0" maxOccurs="1" />
             </xs:sequence>
         </xs:choice>
     </xs:complexType>
+
+    <xs:simpleType name="amount">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0" />
+            <xs:fractionDigits value="2" />
+        </xs:restriction>
+    </xs:simpleType>
 
 </xs:schema>
