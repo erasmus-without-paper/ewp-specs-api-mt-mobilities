@@ -71,6 +71,7 @@
                                     <xs:documentation>
                                         Type of activity for this mobility. The value of activity code
                                         from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries API.
+                                        <!-- TODO we do not have such dictionary -->
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
@@ -114,11 +115,9 @@
                             <xs:element name="education-field" type="xs:string" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        <!-- TODO add dictionary name in all fields which can be retrieved using Dictionaries 
-                                            API -->
                                         The field of education of the mobility. The value of education
                                         field code from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries
-                                        API.
+                                        API (education_fields).
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
@@ -127,7 +126,7 @@
                                     <xs:documentation>
                                         The level of study/teaching for the mobility. The value of
                                         education level code from CCM2. Values can be retrieved using Mobility Tool+
-                                        Dictionaries API.
+                                        Dictionaries API (education_levels).
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
@@ -151,7 +150,7 @@
                                     <xs:documentation>
                                         The main language that the individual participant uses during the
                                         mobility activity. The value of language code from CCM2. Values can be retrieved
-                                        using Mobility Tool+ Dictionaries API.
+                                        using Mobility Tool+ Dictionaries API (languages).
                                     </xs:documentation>
                                 </xs:annotation>
                                 <xs:complexType>
@@ -178,7 +177,7 @@
                                     <xs:documentation>
                                         Other used languages in day-to-day situations that are not
                                         necessarily linked to the mobility activity itself. The value of language code
-                                        from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries API.
+                                        from CCM2. Values can be retrieved using Mobility Tool+ Dictionaries API (languages).
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
@@ -206,7 +205,7 @@
                                     <xs:documentation>
                                         The distance band applicable to the countries and cities entered.
                                         The value of distance band code from CCM2. Values can be retrieved using
-                                        Mobility Tool+ Dictionaries API.
+                                        Mobility Tool+ Dictionaries API (distance_bands).
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
@@ -370,7 +369,7 @@
                 <xs:annotation>
                     <xs:documentation>
                         The citizenship of the participant. The value of country code from CCM2. Values
-                        can be retrieved using Mobility Tool+ Dictionaries API.
+                        can be retrieved using Mobility Tool+ Dictionaries API (countries).
                     </xs:documentation>
                 </xs:annotation>
             </xs:element>
@@ -446,7 +445,7 @@
                     <xs:annotation>
                         <xs:documentation>
                             Type of the organization. List of possible values can be retrieved using
-                            Mobility Tool+ Dictionaries API.
+                            Mobility Tool+ Dictionaries API (organization_types).
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -478,7 +477,7 @@
                     <xs:annotation>
                         <xs:documentation>
                             Organization country. The value of country code from CCM2. Values can be
-                            retrieved using Mobility Tool+ Dictionaries API.
+                            retrieved using Mobility Tool+ Dictionaries API (countries).
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
@@ -486,7 +485,7 @@
                     <xs:annotation>
                         <xs:documentation>
                             Organization region. The value of country region code from CCM2. Values can be
-                            retrieved using Mobility Tool+ Dictionaries API.
+                            retrieved using Mobility Tool+ Dictionaries API (country_regions).
                         </xs:documentation>
                     </xs:annotation>
                 </xs:element>
