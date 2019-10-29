@@ -7,7 +7,7 @@
         https://raw.githubusercontent.com/erasmus-without-paper/ewp-specs-api-mt-mobilities/master/endpoints/report-request.xsd
      ">
 
-    <sender-pic></sender-pic>
+    <sender-pic>999572294</sender-pic>
     <mobility>
         <agreement-number>2018-1-PL01-KA103-051716</agreement-number>
         <id>6666510B5BC54684E0530B501E0A3789</id>
@@ -32,11 +32,18 @@
         <main-language native-speaker="false">PT</main-language>
         <other-language>EN</other-language>
         <other-language>ES</other-language>
+        <sending-organization>
+            <pic>999572294</pic>
+        </sending-organization>
         <sending-org-department>Wydział Nauk Ekonomicznych</sending-org-department>
         <receiving-organization>
             <pic>999894916</pic>
         </receiving-organization>
         <receiving-org-department>Faculdade de Economia</receiving-org-department>
+        <sending-country>PL</sending-country>
+        <sending-city>Warsaw</sending-city>
+        <receiving-country>PT</receiving-country>
+        <receiving-city>Porto</receiving-city>
         <outer>false</outer>
         <distance-band>BAND_40</distance-band>
         <start-date>2018-09-24</start-date>
@@ -71,11 +78,18 @@
         <previous-participation>4.67</previous-participation>
         <main-language native-speaker="false">EN</main-language>
         <other-language>PT</other-language>
+        <sending-organization>
+            <pic>999572294</pic>
+        </sending-organization>
         <sending-org-department>Wydział Chemii</sending-org-department>
         <receiving-organization>
             <pic>999894916</pic>
         </receiving-organization>
         <receiving-org-department>Departamento de Química e Bioquímica</receiving-org-department>
+        <sending-country>PL</sending-country>
+        <sending-city>Warsaw</sending-city>
+        <receiving-country>PT</receiving-country>
+        <receiving-city>Porto</receiving-city>
         <outer>false</outer>
         <distance-band>BAND_40</distance-band>
         <start-date>2019-02-21</start-date>
