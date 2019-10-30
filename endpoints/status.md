@@ -28,10 +28,18 @@ Parameters MUST be provided in the regular `application/x-www-form-urlencoded`
 format.
 
 
-### `msg-id` (required)
+### `msg_id` (required)
 
 Identifier of the report message we want to check the status of, as returned by
 the report receiving party.
+
+
+### `mobility_id` (optional, repeatable)
+
+Identifiers of the mobilities we want to check the status of. It SHOULD be mobilities
+that have been sent in the report of given `msg_id`, otherwise they will be ignored.
+This parameter is used to limit the response. If not present, than the server MUST
+return status of all the mobilities from the report.
 
 
 Permissions
@@ -50,6 +58,9 @@ Handling of invalid parameters
 
  * If the caller doesn't have permission to check status of the report with given id
    or the report does not exist, then server MUST respond with HTTP 404.
+   
+ * Mobility ids that where not present in the report of the given `msg_id`
+   MUST be ignored.
 
 
 Response
