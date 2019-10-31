@@ -78,16 +78,14 @@
                             </xs:element>
                             <xs:element name="participant" type="MobilityParticipant" minOccurs="1"
                                 maxOccurs="1" />
-                            <xs:element name="force-majeure" minOccurs="0" maxOccurs="1">
+                            <xs:element name="force-majeure" type="xs:string" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         If present, indicates that the mobility is classified as force
-                                        majeure.
+                                        majeure. The value is the explanation why the mobility is considered as a case
+                                        of force majeure.
                                     </xs:documentation>
                                 </xs:annotation>
-                                <xs:complexType>
-                                    <xs:attribute name="explanation" type="xs:string" use="required" />
-                                </xs:complexType>
                             </xs:element>
                             <xs:element name="studies-combined" type="xs:boolean" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
@@ -312,7 +310,7 @@
                             </xs:element>
                             <!-- TODO The following four fields could possibly be better modelled, but we have to better 
                                 understand their meaning first. -->
-                            <xs:element name="request-except-costs" type="xs:boolean" minOccurs="0"
+                            <xs:element name="request-exceptional-cost" type="xs:boolean" minOccurs="0"
                                 maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
@@ -321,14 +319,15 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="real-travel-costs" type="amount" minOccurs="0" maxOccurs="1">
+                            <xs:element name="travel-cost-real" type="amount" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The exceptional cost for expensive travel.
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="except-travelcosts" type="amount" minOccurs="0" maxOccurs="1">
+                            <xs:element name="travel-cost-exceptional" type="amount" minOccurs="0"
+                                maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The exceptional cost for expensive travel (up to 80% of the
@@ -336,12 +335,12 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="exceptcosts-justification" type="xs:string" minOccurs="0"
+                            <xs:element name="travel-cost-justification" type="xs:string" minOccurs="0"
                                 maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
                                         The description and justification of the exceptional cost for
-                                        expensive travel. Mandatory if the except-travelcosts is greater than 0.
+                                        expensive travel. Mandatory if the exceptional-travel-cost is greater than 0.
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
@@ -364,8 +363,9 @@
                             <xs:element name="credits-number" type="xs:decimal" minOccurs="0" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        The number of ECTS credits (or any other comparable system)
-                                        awarded by the sending higher education institution (HEI) to the student.
+                                        The number of ECTS credits (or any other comparable system,
+                                        appropriate for the action type) awarded by the sending higher education
+                                        institution (HEI) to the student.
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
