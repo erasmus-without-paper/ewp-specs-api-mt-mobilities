@@ -149,11 +149,11 @@
                                 </xs:simpleType>
                             </xs:element>
                             <xs:element name="user-message" type="ewp:StringWithOptionalLang" minOccurs="0"
-                                maxOccurs="1">
+                                maxOccurs="unbounded">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        Reason of the rejection. SHOULD be present if the mobility status
-                                        is REJECTED.
+                                        Reasons of the rejection. Server SHOULD provide at least one
+                                        reason if the mobility status is REJECTED.
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
