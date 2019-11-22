@@ -66,15 +66,18 @@
                                     </xs:documentation>
                                 </xs:annotation>
                             </xs:element>
-                            <xs:element name="activity-type" type="xs:string" minOccurs="1" maxOccurs="1">
+                            <xs:element name="activity-type" minOccurs="1" maxOccurs="1">
                                 <xs:annotation>
                                     <xs:documentation>
-                                        Type of activity for this mobility. The value of activity code
-                                        from CCM2. Values
-                                        can be retrieved using Mobility Tool+ Dictionaries API.
-                                        <!-- TODO we do not have such dictionary -->
+                                        Type of activity for this mobility.
                                     </xs:documentation>
                                 </xs:annotation>
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="HE-SMS-P" />
+                                        <xs:enumeration value="HE-SMP-P" />
+                                    </xs:restriction>
+                                </xs:simpleType>
                             </xs:element>
                             <xs:element name="participant" type="MobilityParticipant" minOccurs="1"
                                 maxOccurs="1" />
