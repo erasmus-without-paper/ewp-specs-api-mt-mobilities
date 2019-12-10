@@ -7,6 +7,10 @@ Mobility Tool+ Mobilities API
 Summary
 -------
 
+**NOTE: This is an unstable version, being tested with the DG EAC.
+If you decide to implement the client side of this API, be aware,
+that until a stable version is released, this API can change to a large extent.**
+
 This document describes the **Mobility Tool+ Mobilities API**.
 It is assumed that this API is implemented by only one host managed by
 the Directoriate-General Education and Culture Unit (DG EAC) of the European Commission.
