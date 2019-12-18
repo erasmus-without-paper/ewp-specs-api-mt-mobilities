@@ -564,7 +564,7 @@
                 </xs:element>
                 <xs:element name="city" type="xs:string" minOccurs="0" maxOccurs="1" />
                 <xs:element name="email" type="ewp:Email" minOccurs="0" maxOccurs="1" />
-                <xs:element name="website-url" type="ewp:HTTPWithOptionalLang" minOccurs="0" maxOccurs="1" />
+                <xs:element name="website-url" type="ewp:HTTP" minOccurs="0" maxOccurs="1" />
                 <xs:element ref="p:phone-number" minOccurs="0" maxOccurs="2" />
                 <xs:element ref="p:fax-number" minOccurs="0" maxOccurs="1" />
             </xs:sequence>
