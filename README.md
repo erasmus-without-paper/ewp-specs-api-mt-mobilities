@@ -1,5 +1,5 @@
-Mobility Tool+ Mobilities API
-=============================
+DISCONTINUED - Mobility Tool+ Mobilities API
+============================================
 
 * [What is the status of this document?][statuses]
 * [See the index of all other EWP Specifications][develhub]
